@@ -2,8 +2,14 @@ import sys
 import random
 import time
 import datetime
+import logging
 
 current_time = datetime.datetime.now()
+
+logging.basicConfig(
+    level=logging.DEBUG,
+    format='%(levelname)s - %(message)s'
+)
 
 print(" **       **                   **                        **  ")
 print("/**      /**                  /**                       /**  ")
@@ -27,7 +33,7 @@ while True:
     try:
         option_chosen = int(option_chosen)
     except ValueError:
-        print("[E] Please enter an integer")
+        logging.warning("Please enter an integer")
         continue
 
     if option_chosen == 0:
@@ -35,3 +41,5 @@ while True:
         sys.exit(0)
     elif option_chosen == 1:
         print("Wifi jammer selected")
+    else:
+        logging.error("thats not a valid option")
